@@ -1,18 +1,15 @@
 // what to do with the hoursObject once it's been built
 function processHours(data, tabletop) {
     // get page_date however you want, I'm just defaulting to new Date
-    var date = new Date(2015, 11, 31);
+    var date = new Date(2015, 2, 3);
 
-    // build the hours object
-    var libhoursObject = new window.libhours(data, date);
-
-    // get all hours
-    var completeHoursObject = libhoursObject.getCompleteHoursObject();
+    // only build the hours object once
+    var completeHoursObject = buildCompleteHoursObject(data, date);
 
     console.log(completeHoursObject);
 
-    // get just one day of hours for one lib
-    var singleHoursObject = libhoursObject.getSingleHoursObject(date, 'Barker Library')
+    // extract the hours for a particular date/lib from the complete object this way
+    var singleHoursObject = getSingleHoursObject(completeHoursObject, date, 'Barker Library')
 
     console.log(singleHoursObject);
 }
